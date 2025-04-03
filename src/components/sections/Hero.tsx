@@ -3,12 +3,14 @@ import { motion } from 'framer-motion';
 
 const HeroSection = styled.section`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
+  gap: ${({ theme }) => theme.spacing.xlarge};
   padding: ${({ theme }) => theme.spacing.xxlarge} 0;
+  width: 100%;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     flex-direction: column;
+    align-items: center;
     text-align: center;
     gap: ${({ theme }) => theme.spacing.large};
   }
@@ -16,34 +18,40 @@ const HeroSection = styled.section`
 
 const ProfileInfo = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.medium};
 `;
 
 const ProfileImage = styled(motion.img)`
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: ${({ theme }) => theme.spacing.large};
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    margin-right: 0;
+    width: 150px;
+    height: 150px;
   }
 `;
 
 const Name = styled.h1`
   font-size: ${({ theme }) => theme.fontSizes.xxlarge};
-  margin-bottom: ${({ theme }) => theme.spacing.small};
+  font-weight: bold;
+  margin: 0;
 `;
 
 const Title = styled.h2`
   font-size: ${({ theme }) => theme.fontSizes.large};
-  color: ${({ theme }) => theme.colors.secondary};
-  margin-bottom: ${({ theme }) => theme.spacing.medium};
+  color: ${({ theme }) => theme.colors.primary};
+  margin: 0;
 `;
 
 const ActionButtons = styled.div`
   display: flex;
   gap: ${({ theme }) => theme.spacing.medium};
+  margin-top: ${({ theme }) => theme.spacing.large};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     justify-content: center;
@@ -51,14 +59,16 @@ const ActionButtons = styled.div`
 `;
 
 const Button = styled.a`
-  padding: ${({ theme }) => `${theme.spacing.small} ${theme.spacing.large}`};
+  padding: ${({ theme }) => `${theme.spacing.small} ${theme.spacing.medium}`};
   background-color: ${({ theme }) => theme.colors.primary};
   color: white;
+  text-decoration: none;
   border-radius: 4px;
-  transition: opacity 0.2s;
+  font-weight: 500;
+  transition: background-color 0.2s;
   
   &:hover {
-    opacity: 0.9;
+    background-color: ${({ theme }) => theme.colors.primaryDark};
   }
 `;
 
@@ -66,15 +76,15 @@ const Hero = () => {
   return (
     <HeroSection>
       <ProfileImage
-        src="/path-to-your-image.jpg"
+        src="/assets/profile.jpg"
         alt="Profile"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5 }}
       />
       <ProfileInfo>
-        <Name>Your Name</Name>
-        <Title>Software Engineer</Title>
+        <Name>Aman Singh</Name>
+        <Title>Software Engineer, CoinBase</Title>
         <ActionButtons>
           <Button href="/resume.pdf" target="_blank">Resume</Button>
           <Button href="#contact">Contact</Button>

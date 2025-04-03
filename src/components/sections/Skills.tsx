@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 const SkillsSection = styled.section`
   padding: ${({ theme }) => theme.spacing.xxlarge} 0;
+  width: 100%;
 `;
 
 const SectionTitle = styled.h2`
@@ -11,17 +12,18 @@ const SectionTitle = styled.h2`
 `;
 
 const SkillsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: ${({ theme }) => theme.spacing.medium};
+  width: 100%;
 `;
 
 const SkillTag = styled(motion.div)`
   background-color: ${({ theme }) => theme.colors.lightGray};
   padding: ${({ theme }) => theme.spacing.small} ${({ theme }) => theme.spacing.medium};
   border-radius: 4px;
-  text-align: center;
   font-size: ${({ theme }) => theme.fontSizes.small};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const Skills = () => {
